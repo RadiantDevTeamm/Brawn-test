@@ -324,11 +324,11 @@ const was=U.src;setTimeout(()=>{if(roll<ch){gifts.push({u:uid++,id:t});popup(1,'
 const GAMES={mines:rMines,plinko:rPlinko,sweep:rSweep,up:rUp};
 // CASES
 const CASES=[
-{id:'a',n:'Уличный лут',p:10,img:'./case-trash.png',L:[['s',2,40],['s',5,28],['s',10,16],['s',20,8],['s',35,3],['s',60,1],['g','bear',4]]},
-{id:'b',n:'Восточный сундук',p:100,img:'./case-sultan.png',L:[['s',30,34],['s',50,24],['s',80,16],['s',120,10],['s',200,6],['s',400,1],['g','cig',6],['g','watch',3]]},
-{id:'c',n:'Crypto Whale',p:300,img:'./case-crypto.png',L:[['s',100,48],['s',200,28],['s',350,12],['s',600,6],['s',1000,2],['s',1500,1],['g','cap',2],['g','pepe',1]]}];
+{id:'a',n:'Уличный лут',p:10,img:'./case-trash.jpg',L:[['s',2,40],['s',5,28],['s',10,16],['s',20,8],['s',35,3],['s',60,1],['g','bear',4]]},
+{id:'b',n:'Восточный сундук',p:100,img:'./case-sultan.jpg',L:[['s',30,34],['s',50,24],['s',80,16],['s',120,10],['s',200,6],['s',400,1],['g','cig',6],['g','watch',3]]},
+{id:'c',n:'Crypto Whale',p:300,img:'./case-crypto.jpg',L:[['s',100,48],['s',200,28],['s',350,12],['s',600,6],['s',1000,2],['s',1500,1],['g','cap',2],['g','pepe',1]]}];
 let cs=null,busy=0;
-CASES.push({id:'free',n:'Free 12-Hour Case',p:0,img:'./case-tg.png',L:[['s',1,30],['s',2,22],['s',3,16],['s',5,12],['s',10,9],['s',20,6],['s',30,4],['s',50,1]]});
+CASES.push({id:'free',n:'Free 12-Hour Case',p:0,img:'./case-tg.jpg',L:[['s',1,30],['s',2,22],['s',3,16],['s',5,12],['s',10,9],['s',20,6],['s',30,4],['s',50,1]]});
 const COOL=43200000,rem=()=>Math.max(0,freeAt+COOL-Date.now()),hms=ms=>{const s=Math.ceil(ms/1000);return [s/3600|0,(s%3600)/60|0,s%60].map(n=>String(n).padStart(2,'0')).join(':')};
 function freeBanner(){const r=rem();return `<div class="card free fcard" onclick="cs='free';rCases()"><div class="cw"><img class="ci" src="./case-tg.png" alt="Free 12-Hour Case"></div><div style="flex:1;min-width:0"><b style="font-size:16px">🎁 Free 12-Hour Case</b><div class="mut">Win 1 to 50 Stars every 12 hours</div><div class="pill fcd" style="display:inline-flex;margin-top:8px">${r?hms(r):'Ready!'}</div></div></div>`}
 function fTick(){const r=rem(),t=r?hms(r):'Ready!';const cb=document.querySelector('#nv button:nth-child(2)');if(cb){const has=cb.querySelector('.fb');if(!r&&!has)cb.insertAdjacentHTML('beforeend','<em class="fb">Бесплатно</em>');else if(r&&has)has.remove()}document.querySelectorAll('.fcd').forEach(e=>e.textContent=t);const b=$('#ob');if(b&&cs==='free'){b.disabled=!!(busy||r);if(!busy)b.textContent=r?'Next free case in '+hms(r):'Open free case'}}
